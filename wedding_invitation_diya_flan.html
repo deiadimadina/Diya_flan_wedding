@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دیـا & فلان — بانگهێشتی هاوسەرگیری</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#f8f1ed;color:#5d4b45;
+  font-family:"Noto Naskh Arabic",serif;overflow-x:hidden
+}
+#opening{
+  position:fixed;inset:0;z-index:20;background:#f8f1ed;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .9s,visibility .9s;
+}
+#opening.hide{opacity:0;visibility:hidden;pointer-events:none}
+.envelope-wrap{width:min(330px,82vw);text-align:center;cursor:pointer}
+.hint{margin-top:24px;font-size:15px;color:#8b746b}
+.envelope{
+  position:relative;width:100%;aspect-ratio:1.5;
+  background:#ead7ce;border-radius:7px;
+  box-shadow:0 18px 45px rgba(91,66,57,.16);
+  overflow:hidden;perspective:700px
+}
+.envelope:before,.envelope:after{
+  content:"";position:absolute;inset:0;border-style:solid;z-index:2;pointer-events:none
+}
+.envelope:before{border-width:0 0 1px 1px;border-color:#d4bdb2;clip-path:polygon(0 0,50% 50%,100% 0)}
+.envelope:after{background:#e3ccc2;clip-path:polygon(0 100%,0 35%,50% 78%,100% 35%,100% 100%);z-index:3}
+.flap{
+  position:absolute;left:0;top:0;width:100%;height:64%;
+  background:#efded7;clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;transition:transform 1s ease;z-index:5
+}
+.seal{
+  position:absolute;z-index:7;left:50%;top:48%;transform:translate(-50%,-50%);
+  width:64px;height:64px;border-radius:50%;background:#b98f82;color:white;
+  display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:23px;
+  box-shadow:0 4px 12px rgba(90,60,50,.15);transition:opacity .5s
+}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0}
+
+main{min-height:100vh}
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:60px 24px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.8),transparent 30%),
+    radial-gradient(circle at 90% 80%,rgba(231,203,193,.45),transparent 35%);
+}
+.small{letter-spacing:3px;font-size:14px;color:#92786e}
+.names{
+  font-family:"Playfair Display",serif;font-size:clamp(48px,15vw,82px);
+  direction:ltr;color:#7d6158;margin:14px 0
+}
+.amp{font-size:.6em;font-style:italic;color:#a88b80}
+.ornament{font-size:28px;color:#b38b7e;margin:6px}
+.invite{max-width:620px;font-size:20px;line-height:2;margin:10px auto}
+.date{font-size:22px;margin-top:18px;color:#775e56}
+.scroll{margin-top:42px;font-size:13px;color:#a0877d;animation:bob 1.8s infinite}
+@keyframes bob{50%{transform:translateY(7px)}}
+
+.section{padding:80px 22px;text-align:center;max-width:760px;margin:auto}
+.section h2{font-family:"Playfair Display",serif;font-size:34px;color:#765b53;font-weight:400}
+.card{
+  background:rgba(255,255,255,.7);border:1px solid #eadbd4;
+  border-radius:22px;padding:30px 20px;box-shadow:0 12px 35px rgba(100,75,65,.08)
+}
+.info{font-size:20px;line-height:2.2}
+.countdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.count{background:#f3e6e0;border-radius:15px;padding:14px 5px}
+.count b{display:block;font-size:27px;font-family:"Playfair Display",serif;font-weight:400}
+.count span{font-size:13px}
+.map-btn{
+  display:inline-block;margin-top:22px;padding:12px 24px;border-radius:999px;
+  background:#8d6d63;color:white;text-decoration:none
+}
+.footer{padding:70px 20px;text-align:center;background:#eee0da}
+.footer .names{font-size:44px}
+
+@media(max-width:420px){
+ .invite{font-size:18px}
+ .section{padding:65px 18px}
+}
+</style>
+</head>
+<body>
+
+<div id="opening">
+  <div class="envelope-wrap" id="openBtn">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="seal">د♡ف</div>
+    </div>
+    <div class="hint">کلیک بکە بۆ کردنەوەی بانگهێشتەکە</div>
+  </div>
+</div>
+
+<main>
+<section class="hero">
+  <div class="small">بە ناوی خوای گەورە</div>
+  <div class="ornament">✦</div>
+  <div class="small">بە خۆشحاڵییەوە</div>
+  <div class="names">Diya <span class="amp">&</span> Flan</div>
+  <p class="invite">
+    بە دڵێکی پڕ لە خۆشحاڵی بانگهێشتتان دەکەین
+    بۆ بەشداریکردن لە ڕۆژی هاوسەرگیریی ئێمە.
+  </p>
+  <div class="date">١١ی ١١ی ٢٠٣٠</div>
+  <div class="scroll">⌄<br>بۆ زانیاری زیاتر</div>
+</section>
+
+<section class="section">
+  <h2>ڕۆژی تایبەتمان</h2>
+  <div class="card">
+    <div class="info">
+      <div>♡</div>
+      <div><strong>دیـا & فلان</strong></div>
+      <div>١١ی ١١ی ٢٠٣٠</div>
+      <div>شوێن: Garden City</div>
+    </div>
+    <div class="countdown" id="countdown">
+      <div class="count"><b id="days">--</b><span>ڕۆژ</span></div>
+      <div class="count"><b id="hours">--</b><span>کاتژمێر</span></div>
+      <div class="count"><b id="minutes">--</b><span>خولەک</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>شوێنی بۆنەکە</h2>
+  <div class="card">
+    <div class="info">📍 Garden City</div>
+    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Garden%20City" target="_blank">
+      کردنەوەی نەخشە
+    </a>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="ornament">✦</div>
+  <div class="small">چاوەڕێی ئامادەبوونتان دەکەین</div>
+  <div class="names">Diya <span class="amp">&</span> Flan</div>
+  <div class="small">بە هیوای بەشداریکردنی خۆشحاڵیتان لەگەڵمان</div>
+</section>
+</main>
+
+<script>
+const opening=document.getElementById("opening");
+const envelope=document.getElementById("envelope");
+document.getElementById("openBtn").addEventListener("click",()=>{
+  envelope.classList.add("open");
+  setTimeout(()=>opening.classList.add("hide"),850);
+});
+
+const target=new Date("2030-11-11T18:00:00+03:00").getTime();
+function update(){
+  const diff=Math.max(0,target-Date.now());
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  document.getElementById("days").textContent=d;
+  document.getElementById("hours").textContent=h;
+  document.getElementById("minutes").textContent=m;
+}
+update();setInterval(update,1000);
+</script>
+</body>
+</html>
